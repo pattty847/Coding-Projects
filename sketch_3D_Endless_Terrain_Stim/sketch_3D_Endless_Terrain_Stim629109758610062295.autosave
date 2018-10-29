@@ -24,9 +24,7 @@ void setup() {
 }
 
 void draw() {
-
   flying -= 0.005;
-
   float yoff = flying;
   for (int y = 0; y < rows; y++) 
   {
