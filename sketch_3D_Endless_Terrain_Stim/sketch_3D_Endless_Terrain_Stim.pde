@@ -8,6 +8,7 @@ int w = 2000;
 int h = 1600;
 float flying = 0;
 float[][] terrain;
+float value;
 
 PeasyCam camera;
 
@@ -24,9 +25,7 @@ void setup() {
 }
 
 void draw() {
-
   flying -= 0.005;
-
   float yoff = flying;
   for (int y = 0; y < rows; y++) 
   {
@@ -34,9 +33,9 @@ void draw() {
     for (int x = 0; x < cols; x++) 
     {
       terrain[x][y] = map(noise(xoff, yoff), 0, 1, 0, 255);
-      xoff += 0.03;
+      xoff += 0.05;
     }
-    yoff += 0.03;
+    yoff += 0.05;
   }
   translate(-width, -height);
   background(0);
