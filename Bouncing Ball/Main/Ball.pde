@@ -12,7 +12,7 @@ public class Ball{
      circleX = (random(0, width));
      this.ySpeed = random(5, 20);
      this.xSpeed = random(5, 20);
-     this.size = random(10, 30);
+     this.size = random(10, 150);
   }
   
   public void drawBall(){
@@ -26,7 +26,7 @@ public class Ball{
       line(width, height, circleX, circleY); 
   }
   
-  void initBouncing(){
+  public void initBouncing(){
       circleX = circleX += xSpeed;
       circleY = circleY += ySpeed;
       if(circleY > height || circleY < 0){
@@ -37,6 +37,16 @@ public class Ball{
           xSpeed = xSpeed * -1;
           drawBall();
       }
-  }  
+  }
+  public float getX(){
+    return this.circleX;
+  }
+  public float getY(){
+    return this.circleY;
+  }
+  public float getDistance(){
+    return dist(g
+  }
+  
 
 }
