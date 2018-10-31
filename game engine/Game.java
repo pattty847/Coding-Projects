@@ -3,6 +3,20 @@ import java.awt.image.BufferStrategy;
 import java.awt.Canvas;
 import java.awt.Color;
 
+/**
+ * This is the main heart beat for the game engine. It contains multiple comments so I can see where my knowledge progresses as time goes on.
+ * The file must extend Canvas in order to draw from the Window class and implement Runnable for the thread we create in start().
+ * 
+ * Sequence of events:
+ *  1: Game() is called from main() at the bottom
+ *  2: New Window() is created with the size and title and handler is initialized.
+ *  3: Go to Window class file for step 4.
+ *  9: Thread is started with start() and running is set to true.
+ * 10: In the run() method 'running' sets the while loop, which sets the counter for frames. 'running also sets of if statement'.
+ * 11: In the render() method 'running' sets the graphics up which draws background color, etc.
+ */
+
+
 public class Game extends Canvas implements Runnable{
 
     private static final long serialVersionUID = 1L;
@@ -10,11 +24,17 @@ public class Game extends Canvas implements Runnable{
     private Thread thread;
     private boolean running = false;
     private final double UPDATA_CAP = 1.0/60.0;
-    static Graphics graf;
+    Graphics graf;
     public static final int W = 800, H = 800;
+    private Handler handler;
 
     public Game(){
         new Window(W, H, "Nipples", this);
+        handler = new Handler();
+
+        // Adds a new object to the handler, which displays it on the screen
+        // Will update:
+        handler.addObj(new Player(100, 100, ID.Player));
     }
 
 
@@ -63,7 +83,7 @@ public class Game extends Canvas implements Runnable{
     }
 
     private void tick(){
-
+        handler.tick();
     }
 
     private void render(){
@@ -72,12 +92,12 @@ public class Game extends Canvas implements Runnable{
             this.createBufferStrategy(3);
             return;
         }
-        Graphics graf = bs.getDrawGraphics();
+        Graphics graphics = bs.getDrawGraphics();
 
-        graf.setColor(Color.DARK_GRAY);
-        graf.fillRect(0, 0, W, H);
-
-        graf.dispose();;
+        graphics.setColor(Color.DARK_GRAY);
+        graphics.fillRect(0, 0, W, H);
+        handler.render(graphics);
+        graphics.dispose();;
         bs.show();
     }
 
