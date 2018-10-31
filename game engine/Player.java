@@ -12,7 +12,11 @@ public class Player extends GameObject{
 
     }
 
+    /**
+     *  Set the color and render an image with the x and y variables for player. Go to Game file.
+     */
+
     public void render(Graphics g){
-        
+
     }
 }
