@@ -12,9 +12,9 @@ void mouseClicked(){
 
 
 void draw(){
-   background(51);
-   fill(200);
-   stroke(255);
+  Ball b1 = new Ball();
+  background(51);
+  b1.createFloor();
    for(int i=0;i<bSize;i++){
      b[i].initBouncing();
      b[i].drawBall();
