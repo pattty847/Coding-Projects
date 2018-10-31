@@ -20,21 +20,22 @@ import java.awt.Color;
 public class Game extends Canvas implements Runnable{
 
     private static final long serialVersionUID = 1L;
+    private boolean running = false;
+    public static final int W = 800, H = 800;
 
     private Thread thread;
-    private boolean running = false;
-    private final double UPDATA_CAP = 1.0/60.0;
-    Graphics graf;
-    public static final int W = 800, H = 800;
+    private Graphics graf;
     private Handler handler;
 
-    public Game(){
-        new Window(W, H, "Nipples", this);
-        handler = new Handler();
 
-        // Adds a new object to the handler, which displays it on the screen
-        // Will update:
+    // Adds a new object to the handler, which displays it on the screen
+    // Handler(x, y, ID); --- Add the ID to the class file ID.
+    public Game(){
+        handler = new Handler();
+        this.addKeyListener(new KeyInput());
+        new Window(W, H, "Nipples", this);
         handler.addObj(new Player(100, 100, ID.Player));
+        handler.addObj(new Player(200, 150, ID.Player));
     }
 
 
@@ -86,14 +87,18 @@ public class Game extends Canvas implements Runnable{
         handler.tick();
     }
 
+    /**
+     * Render sets up the background graphics, and fills them with each GameObject. 
+     */
+
     private void render(){
         BufferStrategy bs = this.getBufferStrategy();
         if(bs == null){
             this.createBufferStrategy(3);
             return;
         }
-        Graphics graphics = bs.getDrawGraphics();
 
+        Graphics graphics = bs.getDrawGraphics();
         graphics.setColor(Color.DARK_GRAY);
         graphics.fillRect(0, 0, W, H);
         handler.render(graphics);

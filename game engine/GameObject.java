@@ -9,15 +9,18 @@ public abstract class GameObject{
 
 //-:We pass GameObject these vars which set the protected
 //-:vars above. They are accessable because above.
+//-:These make up each game object and their qualities.
     public GameObject(int x, int y, ID id){
         this.x = x;
         this.y = y;
-        this.id = ID;
+        this.id = id;
     }
+
 //-:These are unimplemented methods which can be accessed in other classes
 //-:and created there, too. You must the vars to GameObject(int x, int y, ID id) and super(x, y, id)
     public abstract void tick(); 
     public abstract void render(Graphics g);
+
 //-:Getters and setters use able for each GameObject that extends this class file. Just use setX(x), setY(y), etc...
     public void setX(int x){ this.x = x; }
     public void setY(int y){ this.y = y; }
