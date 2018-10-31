@@ -44,9 +44,7 @@ public class Ball{
   public float getY(){
     return this.circleY;
   }
-  public float getDistance(){
-    return dist(g
-  }
+  
   
 
 }

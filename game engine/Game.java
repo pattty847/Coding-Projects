@@ -1,71 +1,92 @@
-public class Game  implements Runnable{
-    private Thread tread;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.awt.Canvas;
+import java.awt.Color;
+
+public class Game extends Canvas implements Runnable{
+
+    private static final long serialVersionUID = 1L;
+
+    private Thread thread;
     private boolean running = false;
     private final double UPDATA_CAP = 1.0/60.0;
-    Window w;
+    static Graphics graf;
+    public static final int W = 800, H = 800;
 
-    public void start(){
-        w = new Window();
+    public Game(){
+        new Window(W, H, "Nipples", this);
+    }
+
+
+    public synchronized void start(){
         Thread thread = new Thread(this); //New thread
-        thread.run(); //Main thread .run();
-    }
-
-    public void stop(){
-
-    }
-
-    public void run(){
+        thread.start();
         running = true;
-        double firstTime = 0;
-        boolean render = false;
-        double lastTime = System.nanoTime()/ 1000000000.0;
-        double passedTime = 0;
-        double unprocessTime = 0;
-        int frames = 0;
-        double frameTime = 0;
-        int fps = 0;
-        while(running){
-            render = false;
-            firstTime = System.nanoTime() / 1000000000.0; //Stores the miliseconds of the time NOW
-            passedTime = firstTime - lastTime; //The passedTime is calculated by subtracting ^ from the time it is NOW
-            lastTime = firstTime; //Saves initial time to be recaluclated 
-            unprocessTime += passedTime; //Counts the passed time
-            frameTime += passedTime;
-            while(unprocessTime >= UPDATA_CAP){
-                unprocessTime -= UPDATA_CAP;
-                render = true;
-                /* 
-                * Where the game will be updated
-                */
-                
+    }
 
-                if(frameTime >= 1.0){
-                    frameTime = 0;
-                    fps = frames;
-                    frames = 0;
-                    System.out.println("FPS: "+fps);
-                }
+    public synchronized void stop(){
+        try{
+            thread.join();
+            running = false;
+        }catch(Exception c){
+            e.printStackTrace();
+        }
+    }
+
+    public void run()
+    {
+        long lastTime = System.nanoTime();
+        double amountTicks = 60.0;
+        double ns = 1000000000/amountTicks;
+        double delta = 0;
+        long timer = System.currentTimeMillis();
+        int frames = 0;
+        while(running){
+            long now = System.nanoTime();
+            delta +=(now-lastTime)/ns;
+            lastTime = now;
+            while(delta>=1){
+                tick();
+                delta--;
             }
-            if(render){
-                frames++;
-                w.update();
-            }else{
-                try{
-                    tread.sleep(1);
-                }catch(InterruptedException e){
-                    e.printStackTrace();
-                }
+            if(running)
+                render();
+            frames++;
+            
+            if(System.currentTimeMillis() - timer > 1000){
+                timer += 1000;
+                System.out.println("FPS: "+frames);
+                frames = 0;
             }
         }
-        dispose();
+        stop();
+    }
+
+    private void tick(){
+
+    }
+
+    private void render(){
+        BufferStrategy bs = this.getBufferStrategy();
+        if(bs == null){
+            this.createBufferStrategy(3);
+            return;
+        }
+        Graphics graf = bs.getDrawGraphics();
+
+        graf.setColor(Color.DARK_GRAY);
+        graf.fillRect(0, 0, W, H);
+
+        graf.dispose();;
+        bs.show();
     }
 
     public void dispose(){
 
     }
 
-    public static void main(String[] args) {
-        Game g = new Game();
-        g.start();
+    public static void main(String[] args)
+    {
+        new Game();
     }
 }

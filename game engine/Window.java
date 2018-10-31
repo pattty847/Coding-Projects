@@ -1,26 +1,23 @@
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Graphics;
+import java.awt.Dimension;
 import javax.swing.JFrame;
+import java.awt.Canvas;
 
 public class Window extends Canvas{
-    private Graphics g;
 
+    private static final long serialVersionUID = 1L;
 
-    public Window(){
-        JFrame frame = new JFrame("Bouncing Ball"); //Initialies title
-        Canvas canvas = new Canvas(); //Creates a new canvas using Ball_Main() because it extends Cavas
-        canvas.setSize(800, 800);
-        canvas.setBackground(Color.darkGray);
+    public Window(int w, int h, String t, Game game) {
+        JFrame frame = new JFrame(t);
+
+        frame.setPreferredSize(new Dimension(w, h));
+        frame.setMaximumSize(new Dimension(w, h));
+        frame.setMinimumSize(new Dimension(w, h));
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.add(canvas);
-        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.add(game);
         frame.setVisible(true);
-        canvas.createBufferStrategy(2);
-    }
-
-    public void update(){
-        
+        game.start();
     }
 }
