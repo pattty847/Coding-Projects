@@ -29,11 +29,9 @@ void draw() {
     beginShape(TRIANGLE_STRIP);
     for (int x = 0; x < cols; x++) {
       fill(color(66, 128, 244));
-      vertex(x*scl, y*scl);
-      vertex(x*scl, (y+1)*scl);
+      rect(x*scl, y*scl, scl, scl);
     }
     endShape();
-    rotateX(radians(frameRate % 360));
     
   }
 }
