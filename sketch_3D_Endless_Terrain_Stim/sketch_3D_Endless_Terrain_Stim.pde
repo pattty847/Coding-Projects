@@ -39,7 +39,6 @@ void draw() {
   }
   translate(-width, -height);
   background(0);
-  stroke(255);
   noFill();
   for (int y = 0; y < rows-1; y++) {
     beginShape(TRIANGLE_STRIP);

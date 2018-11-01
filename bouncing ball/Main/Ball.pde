@@ -22,6 +22,11 @@ public class Ball{
       acceleration.add(f);
   }
   
+  public void applyWind(PVector wind){
+      PVector windNew = PVector.div(force, wind); 
+      acceleration.add(windNew);
+  }
+  
   public void update(){
        circleVel.add(acceleration); //Add it to the initial random placement vector.
        circle.add(circleVel);  

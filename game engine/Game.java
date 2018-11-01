@@ -32,10 +32,8 @@ public class Game extends Canvas implements Runnable{
     // Handler(x, y, ID); --- Add the ID to the class file ID.
     public Game(){
         handler = new Handler();
-        this.addKeyListener(new KeyInput());
-        new Window(W, H, "Nipples", this);
-        handler.addObj(new Player(100, 100, ID.Player));
-        handler.addObj(new Player(200, 150, ID.Player));
+        //this.addKeyListener(new KeyInput());
+        new Window(W, H, "Game.", this);
     }
 
 
@@ -99,8 +97,6 @@ public class Game extends Canvas implements Runnable{
         }
 
         Graphics graphics = bs.getDrawGraphics();
-        graphics.setColor(Color.DARK_GRAY);
-        graphics.fillRect(0, 0, W, H);
         handler.render(graphics);
         graphics.dispose();;
         bs.show();

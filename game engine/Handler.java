@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.awt.Graphics;
+import java.awt.Color;
 /**
  * This file will accept each GameObject, add it to a LinkedList, then render
  * each object with a for loop in the tick() method. 
@@ -18,6 +19,10 @@ public class Handler {
     }
 
     public void render(Graphics g){
+        g.setColor(Color.DARK_GRAY);
+        g.fillRect(0, 0, 800, 800);
+        Cell cell = new Cell(0, 0);
+        cell.createCell(g);
         for(int i=0;i<object.size();i++){
             GameObject obj = object.get(i); //Retreves the object from index(i).
             obj.render(g);
