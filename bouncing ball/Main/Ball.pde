@@ -1,52 +1,55 @@
 import java.util.Random;
+import java.awt.Rectangle;
+
 public class Ball{
-  PVector circleXY;
+  PVector circle;
   PVector circleVel;
   PVector lineXY = new PVector(width/2, height);
-
+  PVector force;
+  PVector acceleration;
+  float mass;
   float size;
   
   Ball(){
-     circleXY = new PVector(random(0, width), random(0, height));
-     circleVel = new PVector(random(5, 20), random(5, 20));
-     this.size = random(5, 80);
+     circle = new PVector(random(0, width), random(0, height));
+     circleVel = new PVector(0, 0);
+     acceleration = new PVector(0, 0);
+     mass = random(1, 4);
   }
   
-  public void drawBall(){
-      float hu = map(circleXY.y, 0, height, 0, 255);
-      fill(color(hu, 255, 255));
-      ellipse(circleXY.x, circleXY.y, size, size);
-      moveBall();
+  public void applyForce(PVector force){
+      PVector f = PVector.div(force, mass);
+      acceleration.add(f);
   }
   
+  public void update(){
+       circleVel.add(acceleration); //Add it to the initial random placement vector.
+       circle.add(circleVel);  
+       acceleration.mult(0);
+  }
   
-  public void moveBall(){
-      circleXY.add(circleVel.x, circleVel.y); 
+  public void display(){
+     stroke(0);
+     strokeWeight(2);
+     fill(255);
+     ellipse(circle.x, circle.y, mass*16, mass*16); 
   }
   
   public void drawLTF(){
-      line(lineXY.x, lineXY.y, circleXY.x, circleXY.y);
+      line(lineXY.x, lineXY.y, circle.x, circle.y);
   }
   
   public void initBouncing(){
-      if((circleXY.x >= width) || (circleXY.x <= 0)){
-          circleVel.x = circleVel.x * -1;
+      if(circle.x>width){
+         circle.x = width;
+         circleVel.x*=-1;
+      }else if(circle.x<0){
+         circleVel.x*=-1;
+         circle.x = 0;
       }
-      if((circleXY.y >= height) || (circleXY.y <= 0)){
-          circleVel.y = circleVel.y * -1;
+      if(circle.y > height){
+         circleVel.y*=-1;
+         circle.y = height;
       }
   }
-  
-  public void createFloor(){
-    int cols = width / 30;
-    int scl = 30;
-      for (int y = 0; y < cols; y++) 
-      {
-        for (int x = 0; x < cols; x++) 
-        {
-           fill(255);
-           rect(x*scl, y*scl, scl, scl);
-        }
-      }  
-    }
 }
