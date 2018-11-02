@@ -1,0 +1,44 @@
+public void run(){
+    running = true;
+    boolean render = false;
+    double firstTime = 0;
+    double lastTime = System.nanoTime()/ 1000000000.0;
+    double passedTime = 0;
+    double unprocessTime = 0;
+    int frames = 0;
+    double frameTime = 0;
+    int fps = 0;
+    while(running){
+        render = false;
+        firstTime = System.nanoTime() / 1000000000.0; //Stores the miliseconds of the time NOW
+        passedTime = firstTime - lastTime; //The passedTime is calculated by subtracting ^ from the time it is NOW
+        lastTime = firstTime; //Saves initial time to be recaluclated 
+        unprocessTime += passedTime; //Counts the passed time
+        frameTime += passedTime;
+        while(unprocessTime >= UPDATA_CAP){
+            unprocessTime -= UPDATA_CAP;
+            render = true;
+            /* 
+            * Where the game will be updated
+            */
+            
+
+            if(frameTime >= 1.0){
+                frameTime = 0;
+                fps = frames;
+                frames = 0;
+                System.out.println("FPS: "+fps);
+            }
+        }
+        if(render){
+            frames++;
+        }else{
+            try{
+                thread.sleep(1);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+    }
+    dispose();
+}

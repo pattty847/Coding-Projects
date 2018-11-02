@@ -4,8 +4,7 @@ import java.awt.Color;
 public class Cell{
 
     private int x, y;
-    private Cell cell;
-    private boolean isOn, isDead = false;
+    private Cell parent;
     private int cols, rows;
     private int scl = 40;
 
@@ -50,4 +49,15 @@ public class Cell{
             }
         }
     }
+    
+    public void setParent(Cell parent) {
+		this.parent = parent;
+	}
+
+	public static boolean isEqual(Cell c, Cell c2) {
+		if (c.getX() == c2.getX() && c.getY() == c2.getY()) {
+			return true;
+		}
+		return false;
+	}
 }

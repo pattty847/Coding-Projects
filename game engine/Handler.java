@@ -10,6 +10,8 @@ public class Handler {
 //-:Creates a list that each element is connected to the one before and after (for the GameObjects)
 //-:Go to GameObject to see how the file is constructed.
     LinkedList<GameObject> object = new LinkedList<GameObject>();
+    LinkedList<Cell> cells = new LinkedList<Cell>();
+    ArrayList[] cols, rows;
 
     public void tick(){
         for(int i=0;i<object.size();i++){
@@ -21,8 +23,9 @@ public class Handler {
     public void render(Graphics g){
         g.setColor(Color.DARK_GRAY);
         g.fillRect(0, 0, 800, 800);
-        Cell cell = new Cell(0, 0);
-        cell.createCell(g);
+        for(int j = 0;j<cells.size();j++){
+            cells.add(cells.get(j));
+        }
         for(int i=0;i<object.size();i++){
             GameObject obj = object.get(i); //Retreves the object from index(i).
             obj.render(g);
@@ -37,6 +40,13 @@ public class Handler {
     this.id = ID;
     }
  */
+
+    public void addCell(Cell c){
+        this.cells.add(obj);
+    }
+    public void removeCell(Cell c){
+        this.cells.remove(obj);
+    }
 
     public void addObj(GameObject obj){
         this.object.add(obj);
