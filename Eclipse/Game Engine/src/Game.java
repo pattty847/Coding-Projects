@@ -36,6 +36,10 @@ public class Game extends Canvas implements Runnable{
         handler = new Handler();
         KeyHandler keyHandler = new KeyHandler();
         this.addKeyListener(keyHandler);
+        
+        
+        
+        
         new Window(W, H, "Game.", this);
     }
 
@@ -52,13 +56,6 @@ public class Game extends Canvas implements Runnable{
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
-    
-    public int getHeight() {
-    	return H;
-    }
-    public int getWidth() {
-    	return W;
     }
     
     public void run()

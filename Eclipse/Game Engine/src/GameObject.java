@@ -6,6 +6,10 @@ public abstract class GameObject{
     protected int x, y; 
     protected ID id;
     protected int velX, velY;
+    
+    protected int cellX, cellY;
+    protected Cell parent;
+    
 
 //-:We pass GameObject these vars which set the protected
 //-:vars above. They are accessable because above.
@@ -15,7 +19,6 @@ public abstract class GameObject{
         this.y = y;
         this.id = id;
     }
-
 //-:These are unimplemented methods which can be accessed in other classes
 //-:and created there, too. You must the vars to GameObject(int x, int y, ID id) and super(x, y, id)
     public abstract void tick(); 

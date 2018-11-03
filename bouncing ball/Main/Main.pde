@@ -17,10 +17,8 @@ void draw(){
   background(51);
    for(int i=0;i<bSize;i++){
      PVector gravity = new PVector(0, 0.1 * b[i].mass);
-     PVector wind = new PVector(3, 9);
      b[i].initBouncing();
      b[i].applyForce(gravity);
-     b[i].applyWind(wind);
      b[i].update();
      b[i].display();
      b[i].drawLTF();

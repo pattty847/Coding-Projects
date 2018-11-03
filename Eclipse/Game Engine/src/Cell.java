@@ -10,7 +10,6 @@ public class Cell{
 
 
     public Cell(int x, int y){
-    	
         this.x = x; 
         this.y = y;
     }
@@ -29,11 +28,11 @@ public class Cell{
 	}
 
     public int getX(){
-        return x;
+        return this.x;
     }
 
     public int getY(){
-        return y;
+        return this.y;
     }
     
     public void setParent(Cell parent) {

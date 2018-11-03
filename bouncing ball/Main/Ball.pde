@@ -5,7 +5,7 @@ public class Ball{
   PVector circle;
   PVector circleVel;
   PVector lineXY = new PVector(width/2, height);
-  PVector force;
+  PVector force = new PVector(0, 0);
   PVector acceleration;
   float mass;
   float size;
@@ -21,16 +21,12 @@ public class Ball{
       PVector f = PVector.div(force, mass);
       acceleration.add(f);
   }
-  
-  public void applyWind(PVector wind){
-      PVector windNew = PVector.div(force, wind); 
-      acceleration.add(windNew);
-  }
+ 
   
   public void update(){
        circleVel.add(acceleration); //Add it to the initial random placement vector.
        circle.add(circleVel);  
-       acceleration.mult(0);
+       acceleration.mult(3);
   }
   
   public void display(){
