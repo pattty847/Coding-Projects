@@ -24,6 +24,7 @@ public class Game extends Canvas implements Runnable{
     private static final long serialVersionUID = 1L;
     private boolean running = false;
     public static final int W = 800, H = 800;
+    
 
     private Thread thread;
     private Graphics graf;
@@ -37,10 +38,7 @@ public class Game extends Canvas implements Runnable{
         KeyHandler keyHandler = new KeyHandler();
         this.addKeyListener(keyHandler);
         
-        
-        
-        
-        new Window(W, H, "Game.", this);
+        new Window("Game.", this);
     }
 
     public synchronized void start(){

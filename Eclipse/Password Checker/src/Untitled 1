@@ -1,0 +1,19 @@
+PSUDO CODE
+
+
+Passwords Must be at least 8 characters long.
+contain at least:
+one alpha character [a-zA-Z];
+one numeric character [0-9];
+one character that is not alpha or numeric (! # @ $ % for example but this is just a subset, 
+it could be any character that you can type that is not a letter or number) 
+Passwords Must Not
+
+contain spaces;
+begin with an exclamation [!] or a question mark [?];
+contain repeating character strings of 3 or more identical characters, such as "1111" or "aaa".
+Your task is to create a project to verify whether or not a prospective proper password meets these 
+requirements and that the user has entered the correct password twice.
+
+The project should identify to the user the types of rule violations that are contained in an improperly 
+entered password.
