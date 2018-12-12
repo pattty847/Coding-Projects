@@ -1,0 +1,200 @@
+Go
+plain
+0
+0
+null
+Mediterranean Ave.
+property
+2
+60
+Dark Purple
+Community Chest
+card
+0
+0
+null
+Baltic Ave.
+property
+4
+60
+Dark Purple
+Income Tax
+tax
+200
+0
+null
+Reading Railroad
+railroad
+25
+200
+null
+Oriental Ave
+property
+6
+100
+Light Blue
+Chance
+card
+0
+0
+null
+Vermont Ave.
+property
+6
+100
+Light Blue
+Connecticut Ave.
+property
+8
+120
+Light Blue
+Jail/Just Visiting
+plain
+0
+0
+null
+St. Charles Place
+property
+10
+140
+Light Purple
+Electric Company
+utility
+10
+150
+null
+States Ave.
+property
+10
+140
+Light Purple
+Virginia Ave.
+property
+12
+160
+Light Purple
+Pennsylvania Railroad
+railroad
+25
+200
+null
+St. James Place
+property
+14
+180
+Orange
+Community Chest
+card
+0
+0
+null
+Tennessee Ave.
+property
+14
+180
+Orange
+New York Ave.
+property
+16
+200
+Orange
+Free Parking
+plain
+0
+0
+null
+Kentucky Ave.
+property
+18
+220
+Red
+Chance
+card
+0
+0
+null
+Indiana Ave.
+property
+18
+220
+Red
+Illinois Ave.
+property
+20
+240
+Red
+B & O Railroad
+railroad
+25
+200
+null
+Atlantic Ave.
+property
+22
+260
+Yellow
+Ventnor Ave.
+property
+22
+260
+Yellow
+Water Works
+utility
+10
+150
+null
+Marvin Gardens
+property
+24
+280
+Yellow
+Go To Jail
+toJail
+0
+0
+null
+Pacific Ave.
+property
+26
+300
+Green
+No. Carolina Ave.
+property
+26
+300
+Green
+Community Chest
+card
+0
+0
+null
+Pennsylvania Ave.
+property
+28
+320
+Green
+Short Line Railroad
+railroad
+25
+200
+null
+Chance
+chance
+0
+0
+null
+Park Place
+property
+25
+350
+Dark Blue
+Luxury Tax
+tax
+100
+0
+null
+Boardwalk
+property
+50
+400
+Dark Blue
